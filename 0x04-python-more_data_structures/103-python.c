@@ -1,4 +1,4 @@
-#include <python.h>
+#include <Python.h>
 
 void print_python_list(PyObject *p);
 void print_python_bytes(PyObject *p);
@@ -59,7 +59,7 @@ void print_python_bytes(PyObject *p)
 	printf(" first %d bytes: ", size);
 	for (i = 0; i < size; i++)
 	{
-		print("%02hhx", bytes->ov_sval[i]);
+		printf("%02hhx", bytes->ob_sval[i]);
 		if (i == (size - 1))
 			printf("\n");
 		else
