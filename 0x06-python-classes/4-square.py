@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # 4-square.py by Shedrick
-
 """A module that defines a square"""
 
 
