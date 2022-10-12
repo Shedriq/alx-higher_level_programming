@@ -5,7 +5,7 @@
 class Node:
     """defines a node"""
 
-    def __init__(self, data, next_node=NOne):
+    def __init__(self, data, next_node=None):
         """Initializes the node with instance variables"""
 
         self.data = data
