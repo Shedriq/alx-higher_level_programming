@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Defines a rectangle"""
+"""
+Defines a rectancle
+"""
 
 
 class Rectangle:
@@ -8,7 +10,7 @@ class Rectangle:
         """Instantiation of width and height"""
         if not isinstance(width, int):
             raise TypeError("width must be an integer")
-        if width  < 0:
+        if width < 0:
             raise ValueError("width must be >= 0")
         if not isinstance(height, int):
             raise TypeError("height must be an integer")
@@ -33,12 +35,12 @@ class Rectangle:
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
-            raise ValueError("width must be >=")
+            raise ValueError("width must be >= 0")
         self.__width = value
 
     @height.setter
     def height(self, value):
-        """set height"""
+        """Set height"""
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
