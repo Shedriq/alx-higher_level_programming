@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-"""Module for append_after function"""
+''' Module for append_after func '''
 
 
-def append_after(filename="", serach_string="", new_string=""):
-    """Inserts a line of text to a file after each line
-    containing a specific new_string"""
+def append_after(filename="", search_string="", new_string=""):
+    ''' Inserts a line of text to a file after each line
+        containing a specific new_string
+    '''
 
     lines = []
-    with open(fiename, "r", encoding="utf-8") as f:
+    with open(filename, "r", encoding="utf-8") as f:
         lines = f.readlines()
         i = 0
         while i < len(lines):
