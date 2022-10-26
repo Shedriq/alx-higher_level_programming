@@ -1,18 +1,18 @@
 #!/usr/bin/python3
-"""Module for Student class"""
+''' Module for Student class '''
 
 
 class Student:
-    """Representation of a student"""
+    ''' Representaton of a Student '''
 
-    def __init__(self, fist_name, last_name, age):
-        """Instantiation"""
+    def __init__(self, first_name, last_name, age):
+        ''' Instantiation '''
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
     def to_json(self, attrs=None):
-        """Retrieves dictionary representation"""
+        ''' Retrieves dictionary representation '''
         if type(attrs) is list and all([type(x) == str for x in attrs]):
             return {k: v for k, v in self.__dict__.items() if k in attrs}
         else:
