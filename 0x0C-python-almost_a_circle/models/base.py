@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-"""Module for BAse Class"""
+''' Module for Base class '''
 import json
 import csv
 
 
 class Base:
-    """Base object"""
+    ''' Base object '''
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Constructor"""
+        ''' Constructor '''
         if id is not None:
             self.id = id
         else:
@@ -18,15 +18,15 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """Returns JSON string representation"""
-        if list__dictionaries is None or not list_dictionaries:
+        ''' Returns JSON string representation '''
+        if list_dictionaries is None or not list_dictionaries:
             return "[]"
         else:
-            return json.dumps(lsit_dictionaries)
+            return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """Writes to a file the JSON string representation"""
+        ''' Writes to a file the JSON string representatio '''
         if list_objs is not None:
             list_objs = [obj.to_dictionary() for obj in list_objs]
         with open(f"{cls.__name__}.json", "w", encoding="utf-8") as f:
@@ -34,14 +34,14 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        """Returns the list of the JSON string representation"""
+        ''' Returns the list of the JSON string representation '''
         if json_string is None or not json_string:
             return []
         return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
-        """returns a new instance with attrs specified in dictionary"""
+        ''' Returns a new instance with attrs specified in dictionary '''
         from models.rectangle import Rectangle
         from models.square import Square
         if cls is Rectangle:
@@ -53,7 +53,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """Returns a list of instances loaded from JSON file"""
+        ''' Returns a list of instances loaded from JSON file '''
         import os
         file_path = f"{cls.__name__}.json"
         if not os.path.isfile(file_path):
@@ -63,16 +63,16 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """Saves object into csv file"""
+        ''' Saves object into csv file '''
         from models.rectangle import Rectangle
         from models.square import Square
         if list_objs is not None:
             if cls is Rectangle:
                 list_objs = [[obj.id, obj.width, obj.height, obj.x, obj.y]
-                            for obj in list_objs]
+                             for obj in list_objs]
             else:
                 list_objs = [[obj.id, obj.size, obj.x, obj.y]
-                            for obj in list_objs]
+                             for obj in list_objs]
         with open(f"{cls.__name__}.csv", "w", newline="",
                   encoding="utf-8") as f:
             writer = csv.writer(f)
@@ -80,7 +80,7 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """Loads an object from csv file"""
+        ''' Loads an object from csv file '''
         from models.rectangle import Rectangle
         from models.square import Square
         list_objs = list()
@@ -90,10 +90,10 @@ class Base:
             for row in file:
                 attrs = [int(element) for element in row]
                 if cls is Rectangle:
-                    d = {"id": attrs[0], "widht": attrs[1], "height", attrs[2],
+                    d = {"id": attrs[0], "width": attrs[1], "height": attrs[2],
                          "x": attrs[3], "y": attrs[4]}
                 else:
-                    d = {"id", attrs[0], "size", attrs[1],
+                    d = {"id": attrs[0], "size": attrs[1],
                          "x": attrs[2], "y": attrs[3]}
                 list_objs.append(cls.create(**d))
         return list_objs
