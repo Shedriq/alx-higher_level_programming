@@ -1,8 +1,4 @@
--- create table 'unique_id'
--- id INT default 1 unique, name VARCHAR(256)
--- if table already exists, script should not fail
-create tabl if not exists unique_id
-(
-	id INT DEFAULT 1 UNIQUE,
-	name VARCHAR(256)
-);
+-- Create table 'id_not_null'
+-- id INT default value 1, name VARCHAR(256)
+-- If table already exists, script should not fail
+CREATE TABLE IF NOT EXISTS id_not_null (id INT DEFAULT 1, name VARCHAR(256));
