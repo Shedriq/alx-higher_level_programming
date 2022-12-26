@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 '''Prints all rows in the states table of a database
-with a name that matches the given argument'''
+with a name that matches the given argument.
+'''
 import sys
-import MYSQLdb
+import MySQLdb
 
 
 if __name__ == '__main__':
@@ -17,8 +18,8 @@ if __name__ == '__main__':
         cursor = db_connection.cursor()
         state_name = sys.argv[4]
         cursor.execute(
-            'select * from states where cast(name as binary) like ' +
-            'cast("{}" as binary) order by id asc;'.format(state_name)
+            'SELECT * FROM states WHERE CAST(name AS BINARY) LIKE ' +
+            'CAST("{}" AS BINARY) ORDER BY id ASC;'.format(state_name)
         )
         results = cursor.fetchall()
         for result in results:
